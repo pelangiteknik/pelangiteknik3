@@ -13,3 +13,4 @@ export const useStore = create((set) => ({
     isIntersecting: false,
     setIsIntersecting: (e) => set(() => ({ isIntersecting: e })),
 }))
+
