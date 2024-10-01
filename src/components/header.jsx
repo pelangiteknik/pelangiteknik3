@@ -79,10 +79,7 @@ export default function Header() {
           </div>
           <a className={styles.text2}>BLOG</a>
           <div className={styles.text3}>
-
-
             <Link className={styles.about} href={`/about`}> ABOUT </Link>
-            <div className={styles.cartmobile}> <IoCartOutline /> </div>
           </div>
 
           <div className={styles.pencariandeskop}>
@@ -96,7 +93,9 @@ export default function Header() {
                 <FaSearch color="white" size={27} />
               </div>
             </div>
-            <div className={styles.cartdesktop}> <FaShoppingCart size={27} /> </div>
+            <div className={styles.cartdesktop}>
+
+              <Link href={`/cart`}><FaShoppingCart size={27} /></Link> </div>
             <div className={styles.profil}>
               {session ? <Link href={`/datapesanan`}>
                 <Image

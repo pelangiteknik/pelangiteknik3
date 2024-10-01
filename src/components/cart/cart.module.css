@@ -1,0 +1,198 @@
+.container {
+    display: flex;
+    justify-content: center;
+    color: var(--colorthrid);
+}
+
+.container .dalamcontainer {
+    background-color: var(--colorsekunder);
+    width: var(--max-width);
+}
+
+.content {
+    display: flex;
+}
+
+.judul {
+    font-size: 1rem;
+    font-weight: 700;
+    padding: 20px 20px 0 20px;
+}
+
+.kiri {
+    width: calc(((var(--max-width)*70)/100));
+    /* background-color: red; */
+    /* height: 500px; */
+    padding: 0 30px 30px 30px;
+}
+
+.product {
+    display: flex;
+    padding: 20px 0;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--colortext);
+    border-bottom: 1px solid var(--colorbggreyutama);
+}
+
+.product .kiriproduct {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.product .kiriproduct .judulproduct {
+    font-weight: 500;
+}
+
+.product .kiriproduct .harga {
+    font-size: 0.7rem;
+}
+
+.product .gambar {
+    width: 100px;
+    height: 100px;
+    background-color: blue;
+    border-radius: var(--border-radius);
+}
+
+.product .kananproduct {
+    display: flex;
+    gap: 10px;
+    align-items: baseline;
+}
+
+.product .kananproduct .count {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.product .kananproduct .count button {
+    /* height: fit-content; */
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--colorbggreyutama);
+    background-color: var(--colorsekunder) !important;
+    cursor: pointer;
+}
+
+.product .kananproduct .count button:hover {
+    cursor: pointer;
+    background-color: var(--colorbggreyutama) !important;
+    border-radius: var(--border-radius);
+}
+
+.product .kananproduct .sampah {
+    padding: 5px;
+}
+
+.product .kananproduct .sampah:hover {
+    cursor: pointer;
+    background-color: var(--colorbggreyutama);
+    border-radius: var(--border-radius);
+}
+
+
+
+/* .formContainer button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.formContainer button:hover {
+    background-color: #45a049;
+} */
+
+.kanan {
+    width: calc((var(--max-width)*30)/100);
+    height: fit-content;
+    padding: 30px 30px 0 0;
+    font-size: 0.6rem;
+    position: sticky;
+    top: 70px;
+}
+
+.kanan .edit {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.dalamkanan {
+    background-color: var(--colorbggreyutama);
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.kanan .judulringkasan {
+    font-weight: 500;
+    margin-bottom: 20px;
+    font-size: 0.7rem;
+}
+
+.kanan .subjudul {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.kanan .subjudul .textkanan {
+    font-weight: 500;
+}
+
+.kanan .total {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 500;
+    padding-top: 10px;
+    border-top: 1px solid var(--colorsekunder);
+}
+
+.kanan button {
+    background-color: var(--colorthrid);
+    color: var(--colorsekunder);
+    height: 50px;
+    cursor: pointer;
+    width: 100%;
+    padding: 10px;
+    border-radius: var(--border-radius);
+    font-weight: 500;
+    margin-top: 20px;
+}
+
+.kanan button:hover {
+    font-weight: 700;
+}
+
+@media only screen and (max-width: 1100px) {
+    .content {
+        display: flex;
+        flex-direction: column;
+    }
+
+
+    .kanan {
+        width: 100%;
+        height: fit-content;
+        padding: 30px;
+        font-size: 0.6rem;
+        position: sticky;
+        top: 70px;
+    }
+
+    .kiri {
+        width: 100%;
+        padding: 30px;
+    }
+
+}

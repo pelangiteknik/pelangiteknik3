@@ -11,7 +11,7 @@
   --colorbggrey: #777577 !important;
   --colorgrey: #30302f !important;
   --colorbggreyutama: #e7e7e9 !important;
-
+  --colortext: #333;
   --colorwa: #137036 !important;
   --hover-colorwa: #137037ef !important;
   font-size: 25px;
@@ -44,6 +44,7 @@ a {
 
 h1 {
   font-size: 0.8rem;
+  margin: 10px 0;
 }
 
 

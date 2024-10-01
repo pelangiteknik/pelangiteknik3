@@ -12,5 +12,9 @@ export const useStore = create((set) => ({
 
     isIntersecting: false,
     setIsIntersecting: (e) => set(() => ({ isIntersecting: e })),
+
+    openFormData: false,
+    setOpenFormData: () => set((state) => ({ openFormData: !state.openFormData })),
+
 }))
 
