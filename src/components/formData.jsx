@@ -88,7 +88,7 @@ export default function FormData() {
                                 <Field type="text" name="postalCode" />
                             </div>
                             <button type="submit" disabled={isSubmitting}>
-                                Proses untuk checkout
+                                Konfirmasi
                             </button>
                         </Form>
                     )}

@@ -33,19 +33,20 @@
     align-items: center;
     color: var(--colortext);
     border-bottom: 1px solid var(--colorbggreyutama);
+    gap: 20px;
 }
 
 .product .kiriproduct {
     display: flex;
     align-items: center;
-    gap: 20px;
 }
 
-.product .kiriproduct .judulproduct {
+.product .judulproduct {
+    font-size: 0.8rem;
     font-weight: 500;
 }
 
-.product .kiriproduct .harga {
+.product .harga {
     font-size: 0.7rem;
 }
 
@@ -57,6 +58,12 @@
 }
 
 .product .kananproduct {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.product .text2 {
     display: flex;
     gap: 10px;
     align-items: baseline;
@@ -192,7 +199,18 @@
 
     .kiri {
         width: 100%;
-        padding: 30px;
+        padding: 0 30px 30px 30px;
+    }
+
+}
+
+
+@media only screen and (max-width: 767px) {
+    .product .kananproduct {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
     }
 
 }
