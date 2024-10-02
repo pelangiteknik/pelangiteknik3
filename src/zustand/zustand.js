@@ -8,7 +8,7 @@ export const useStore = create((set) => ({
     setSearchTermClose: () => set((state) => ({ searchTermClose: !state.searchTermClose })),
 
     productMelayangHeader: false,
-    setProductMelayangHeader: () => set((state) => ({ productMelayangHeader: !state.productMelayangHeader })),
+    setProductMelayangHeader: (e) => set((state) => ({ productMelayangHeader: e })),
 
     isIntersecting: false,
     setIsIntersecting: (e) => set(() => ({ isIntersecting: e })),

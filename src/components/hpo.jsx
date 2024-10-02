@@ -2,7 +2,7 @@ import styles from '@/components/hpo.module.css'
 import { RiQuestionnaireFill } from "react-icons/ri";
 import { FaRegEdit } from "react-icons/fa";
 import { RiKeyboardBoxFill } from "react-icons/ri";
-import Link from 'next/link';
+import CustomLink from '@/lib/CustomLink';
 export default function Hpo() {
     return (
         <div className={styles.container}>
@@ -19,15 +19,16 @@ export default function Hpo() {
                         PRODUCT REGISTRATION
                     </div>
                 </div>
-                <Link
-                    href={'/shop'}
-                    target='_blank'
+                <div
                     className={styles.list} >
                     <RiKeyboardBoxFill className={styles.orderparts} />
-                    <div className={styles.text}>
-                        ORDER PARTS
-                    </div>
-                </Link>
+                    <CustomLink href={'/shop'}>
+                        <div className={styles.text}>
+                            ORDER PARTS
+                        </div>
+                    </CustomLink>
+                </div>
+
             </div>
         </div>
     )

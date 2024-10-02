@@ -1,4 +1,4 @@
-import Carts from "@/components/cart/cart"
+import Carts from "@/components/user/cart"
 
 export const dynamic = 'force-dynamic'
 

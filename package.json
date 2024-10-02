@@ -16,12 +16,13 @@
     "next": "14.2.5",
     "next-auth": "^4.24.8",
     "next-cloudinary": "^6.11.0",
+    "nprogress": "^0.2.0",
     "pnpm": "^9.6.0",
     "react": "^18",
     "react-dom": "^18",
     "react-icons": "^5.2.1",
-    "yup": "^1.4.0",
     "swiper": "^11.1.10",
+    "yup": "^1.4.0",
     "zustand": "^4.5.5"
   }
 }

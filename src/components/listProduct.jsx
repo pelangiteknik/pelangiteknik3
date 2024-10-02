@@ -4,10 +4,10 @@ import convertToRupiah from '@/utils/ConvertRupiah'
 import useWindowDimensions from '@/utils/getWindowDimensions'
 import { useStore } from "@/zustand/zustand";
 import Image from 'next/image'
-import Link from 'next/link'
 import { useState } from 'react'
 import { CiFilter } from "react-icons/ci";
 import Judul from './judul';
+import CustomLink from '@/lib/CustomLink';
 
 export default function ListProduct({ Listdata, FilterCategory, Lfilter, pencarian }) {
     const filter = FilterCategory?.data
@@ -40,23 +40,25 @@ export default function ListProduct({ Listdata, FilterCategory, Lfilter, pencari
                                         // Mengganti spasi dengan tanda "-"
                                         const finalString = lowerCaseString?.replace(/ /g, '-');
                                         return (
-                                            <Link
-                                                key={i}
-                                                // target="_blank"
-                                                href={`/category/` + finalString}
-                                                className={styles.list}>
-                                                <div className={styles.gambarikon}>
-                                                    <Image
-                                                        src={data.url_image}
-                                                        width={30}
-                                                        height={30}
-                                                        alt='ok'
-                                                    ></Image>
+                                            <CustomLink href={`/category/` + finalString}>
+                                                <div
+                                                    key={i}
+                                                    // target="_blank"
+                                                    href={`/category/` + finalString}
+                                                    className={styles.list}>
+                                                    <div className={styles.gambarikon}>
+                                                        <Image
+                                                            src={data.url_image}
+                                                            width={30}
+                                                            height={30}
+                                                            alt='ok'
+                                                        ></Image>
+                                                    </div>
+                                                    <div className={styles.text}>
+                                                        {data?.name}
+                                                    </div>
                                                 </div>
-                                                <div className={styles.text}>
-                                                    {data?.name}
-                                                </div>
-                                            </Link>
+                                            </CustomLink>
                                         )
                                     })}
                                 </div>
@@ -67,37 +69,39 @@ export default function ListProduct({ Listdata, FilterCategory, Lfilter, pencari
                         <div className={styles.grid}>
                             {Listdata.map((data, i) => {
                                 return (
-                                    <Link
-                                        // target="_blank"
-                                        href={`/product/${data?.slug}`}
-                                        className={styles.kotak}
-                                        key={i}>
-                                        <div className={styles.gambarbawah}>
-                                            <Image
-                                                src={data?.images[0]?.image}
-                                                alt={data?.slug}
-                                                width={250}
-                                                height={200}
-                                            >
-                                            </Image>
-                                            <div className={styles.wm}>
+                                    <CustomLink href={`/product/${data?.slug}`}>
+                                        <div
+                                            // target="_blank"
+
+                                            className={styles.kotak}
+                                            key={i}>
+                                            <div className={styles.gambarbawah}>
                                                 <Image
-                                                    src={`${process.env.NEXT_PUBLIC_URL}/wm.png`}
-                                                    alt={'wm'}
+                                                    src={data?.images[0]?.image}
+                                                    alt={data?.slug}
                                                     width={250}
                                                     height={200}
                                                 >
                                                 </Image>
+                                                <div className={styles.wm}>
+                                                    <Image
+                                                        src={`${process.env.NEXT_PUBLIC_URL}/wm.png`}
+                                                        alt={'wm'}
+                                                        width={250}
+                                                        height={200}
+                                                    >
+                                                    </Image>
+                                                </div>
+                                            </div>
+                                            <div className={styles.name}>
+                                                {data?.name}
+                                            </div>
+
+                                            <div className={styles.price}>
+                                                {convertToRupiah(data?.price)}
                                             </div>
                                         </div>
-                                        <div className={styles.name}>
-                                            {data?.name}
-                                        </div>
-
-                                        <div className={styles.price}>
-                                            {convertToRupiah(data?.price)}
-                                        </div>
-                                    </Link>
+                                    </CustomLink>
                                 )
                             })}
                         </div>

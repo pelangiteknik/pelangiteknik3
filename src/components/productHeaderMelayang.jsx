@@ -17,7 +17,7 @@ export default function ProductHeaderMelayang({ data }) {
     return (
         <>
             <div className={styles.melayang}
-                onClick={() => setProductMelayangHeader()}></div>
+                onClick={() => setProductMelayangHeader(false)}></div>
             <div className={styles.isimelayang}>
                 <div className={styles.isimelayangdalam}>
                     <div className={styles.dalamkontainer}>

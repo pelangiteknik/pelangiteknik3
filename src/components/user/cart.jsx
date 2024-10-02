@@ -1,7 +1,7 @@
 'use client'
 
 import HeaderFooter from "@/components/layout/headerFooter";
-import styles from '@/components/cart/cart.module.css'
+import styles from '@/components/user/cart.module.css'
 import { FiTrash2 } from "react-icons/fi";
 
 import { useStore } from "@/zustand/zustand";

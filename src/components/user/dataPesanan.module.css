@@ -1,0 +1,132 @@
+.container {
+    display: flex;
+    justify-content: center;
+    color: var(--colorthrid);
+    font-size: 0.7rem;
+    font-weight: 500;
+}
+
+.dalamcontainer {
+    width: var(--max-width);
+    background-color: var(--colorsekunder);
+    padding: 30px;
+}
+
+.atassendiri {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.atassendiri .kiri {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.atassendiri .kiri:hover {
+    font-weight: 700;
+}
+
+.atassendiri .kanan {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.atassendiri .kanan:hover {
+    font-weight: 500;
+    color: var(--colormain);
+}
+
+.judulatas {
+    margin-bottom: 20px;
+    font-weight: 1000;
+}
+
+.listorder {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 10px;
+}
+
+.kotak {
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--colorbggreyutama);
+    border-radius: var(--border-radius);
+    cursor: pointer;
+}
+
+.kotak:hover {
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+}
+
+.kotak .atas {
+    display: flex;
+    gap: 20px;
+}
+
+.kotak .atas .gambar {
+    min-width: 100px;
+    height: 100px;
+    background-color: var(--colorsekunder);
+    border-radius: var(--border-radius);
+}
+
+.kotak .atas .text .judul {
+    font-weight: 700;
+}
+
+.kotak .bawah {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.kotak .bawah .kiri {
+    display: flex;
+    align-items: center;
+}
+
+.kotak .bawah .status {
+    background-color: var(--colorthrid);
+    color: var(--colorsekunder);
+    padding: 3px 10px;
+    border-radius: var(--border-radius);
+}
+
+.kotak .bawah .kiri .harga {
+    font-weight: 700;
+    font-size: 0.8rem;
+    color: var(--colorwa);
+}
+
+
+
+@media only screen and (max-width: 480px) {
+
+    .dalamcontainer {
+        width: 100%;
+    }
+
+
+    .container {
+        font-size: 0.7rem;
+    }
+
+    .dalamcontainer {
+        padding: 20px;
+    }
+
+    .listorder {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+        gap: 10px;
+    }
+
+}

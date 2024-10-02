@@ -10,7 +10,7 @@ import 'swiper/css/navigation';
 // import required modules
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import Image from 'next/image';
-import Link from 'next/link';
+import CustomLink from '@/lib/CustomLink';
 
 export default function BannerMain({ data }) {
     return (
@@ -39,16 +39,18 @@ export default function BannerMain({ data }) {
                         const url = data.name.toLowerCase().replace(/ /g, '-')
                         return (
                             <SwiperSlide key={i}>
-                                <Link
-                                    href={`/category/${url}`}
-                                    target='_blank'
-                                    className={styles.gambar}>
-                                    <Image src={data.url_banner_image}
-                                        alt='satu'
-                                        width={850}
-                                        height={328}
-                                    />
-                                </Link >
+                                <CustomLink href={`/category/${url}`}>
+                                    <div
+                                        target='_blank'
+                                        className={styles.gambar}>
+                                        <Image src={data.url_banner_image}
+                                            alt='satu'
+                                            width={850}
+                                            height={328}
+                                        />
+                                    </div >
+                                </CustomLink>
+
                             </SwiperSlide>
 
                         )

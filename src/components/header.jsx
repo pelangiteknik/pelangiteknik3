@@ -4,22 +4,14 @@ import Image from "next/image"
 import Search from "@/components/search";
 import { IoIosArrowForward } from "react-icons/io";
 import { BsFillTriangleFill } from "react-icons/bs";
-import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useStore } from "@/zustand/zustand";
 import ProductHeaderMelayang from "./productHeaderMelayang";
-import { FaRegUserCircle } from "react-icons/fa";
 import { useSession, signIn, signOut } from "next-auth/react"
-import { IoCartOutline } from "react-icons/io5";
-
-import { CiShoppingCart } from "react-icons/ci";
-import { CiUser } from "react-icons/ci";
-import { CiSearch } from "react-icons/ci";
-
-
 import { FaSearch } from "react-icons/fa";
 import { FaShoppingCart } from "react-icons/fa";
 import { FaUser } from "react-icons/fa";
+import CustomLink from "@/lib/CustomLink";
 export default function Header() {
   const [data, setData] = useState([])
   const searchTermClose = useStore((state) => state.searchTermClose)
@@ -43,7 +35,7 @@ export default function Header() {
   }, [])
 
   const HandlePilihProduct = () => {
-    setProductMelayangHeader()
+    setProductMelayangHeader(true)
   }
 
   const handlePencarian = () => {
@@ -58,16 +50,16 @@ export default function Header() {
   }
 
   const { data: session } = useSession()
-  console.log(session?.user?.image);
-
 
   return (
     <header className={styles.header}>
       <div className={styles.atas}>
         <div className={styles.container}>
-          <Link href={'/'} className={styles.gambar}>
-            <Image src={`${process.env.NEXT_PUBLIC_URL}/logo.png`} height={80} width={400} alt="logo" />
-          </Link>
+          <CustomLink href={'/'}>
+            <div className={styles.gambar}>
+              <Image src={`${process.env.NEXT_PUBLIC_URL}/logo.png`} height={80} width={400} alt="logo" />
+            </div>
+          </CustomLink>
           <div className={styles.text1}
             onClick={() => HandlePilihProduct()}
             style={productMelayangHeader ? { background: ' var(--colorthrid)' } : {}}
@@ -79,7 +71,9 @@ export default function Header() {
           </div>
           <a className={styles.text2}>BLOG</a>
           <div className={styles.text3}>
-            <Link className={styles.about} href={`/about`}> ABOUT </Link>
+            <CustomLink href={`/about`}>
+              <div className={styles.about} > ABOUT </div>
+            </CustomLink>
           </div>
 
           <div className={styles.pencariandeskop}>
@@ -94,10 +88,12 @@ export default function Header() {
               </div>
             </div>
             <div className={styles.cartdesktop}>
-
-              <Link href={`/cart`}><FaShoppingCart size={27} /></Link> </div>
+              <CustomLink href={`/cart`}>
+                <FaShoppingCart size={27} />
+              </CustomLink>
+            </div>
             <div className={styles.profil}>
-              {session ? <Link href={`/datapesanan`}>
+              {session ? <CustomLink href={`/order`}>
                 <Image
                   style={{ borderRadius: '50%' }}
                   src={session?.user?.image}
@@ -105,7 +101,7 @@ export default function Header() {
                   width={27}
                   height={27}
                 ></Image>
-              </Link> : <div onClick={handleLogin}><FaUser size={27} /></div>}
+              </CustomLink> : <div onClick={handleLogin}><FaUser size={27} /></div>}
             </div>
           </div>
 
