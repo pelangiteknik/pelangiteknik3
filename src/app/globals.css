@@ -4,7 +4,7 @@
   --max-width: 1080px !important;
   --border-radius: 4px !important;
   --colormain: #152f66 !important;
-  --hovercolormain: #152f66e5 !important;
+  --hovercolormain: #1e408a !important;
   --colorsekunder: #ffffff !important;
   --colorthrid: #1A1918 !important;
   --colornotif: #ffdf00 !important;
@@ -56,9 +56,14 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Montserrat", sans-serif !important;
   font-optical-sizing: auto;
   border: 0;
+}
+
+
+p span {
+  font-size: 18px !important
 }
 
 /* html,
@@ -286,6 +291,10 @@ td {
 
   .mySwipper .swiper-slide img {
     border-radius: 0;
+  }
+
+  p span {
+    font-size: 16px !important
   }
 
 }

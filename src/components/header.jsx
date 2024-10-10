@@ -42,6 +42,7 @@ export default function Header({ data }) {
 
   const handlePencarian = () => {
     setSearchTermClose()
+    setProductMelayangHeader(false)
   }
 
 
@@ -49,7 +50,7 @@ export default function Header({ data }) {
     <header className={styles.header}>
       <div className={styles.atas}>
         <div className={styles.container}>
-          <Link href={'/'}>
+          <Link href={'/'} onClick={() => setProductMelayangHeader(false)}>
             <div className={styles.gambar}>
               <Image src={`${process.env.NEXT_PUBLIC_URL}/logo.png`} height={80} width={400} alt="logo" />
             </div>
@@ -63,12 +64,12 @@ export default function Header({ data }) {
             </div>}
             PRODUK
           </div>
-          <a className={styles.text2}>BLOG</a>
-          <div className={styles.text3}>
-            <Link href={`/about`}>
+          <a className={styles.text2} onClick={() => setProductMelayangHeader(false)}>BLOG</a>
+          <Link href={`/about`}>
+            <div className={styles.text3} onClick={() => setProductMelayangHeader(false)}>
               <div className={styles.about} > ABOUT </div>
-            </Link>
-          </div>
+            </div>
+          </Link>
 
           <div className={styles.pencariandeskop}>
             <div className={styles.deskop}>
@@ -81,17 +82,17 @@ export default function Header({ data }) {
                 <FaSearch color="white" size={27} />
               </div>
             </div>
-            <div className={styles.cartdesktop}>
+            <div className={styles.cartdesktop} onClick={() => setProductMelayangHeader(false)}>
               <Link href={`/cart`}>
                 <FaShoppingCart size={27} />
               </Link>
             </div>
-            <div className={styles.note}>
+            <div className={styles.note} onClick={() => setProductMelayangHeader(false)}>
               <Link href={`/order`}>
                 <PiNotepadBold size={27} />
               </Link>
             </div>
-            <div className={styles.profil}>
+            <div className={styles.profil} onClick={() => setProductMelayangHeader(false)}>
               {userId ? <UserButton /> :
                 <Link href={`/sign-in`}>
                   <div><FaUser size={27} /></div>
@@ -103,7 +104,7 @@ export default function Header({ data }) {
           </div>
 
           {searchTermClose &&
-            <div className={styles.pencarianklik}>
+            <div className={styles.pencarianklik} onClick={() => setProductMelayangHeader(false)}>
               <Search />
             </div>}
         </div>

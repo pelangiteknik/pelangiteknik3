@@ -106,3 +106,25 @@ export const GetKategori = async (id) => {
     }
     revalidatePath('/')
 }
+
+
+export const GetSearch = async (id) => {
+    try {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_URL_API}/api/p/SProduct?id=${id}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `${process.env.NEXT_PUBLIC_SECREET}`
+            },
+            next: {
+                revalidate: 0
+            }
+        });
+        const data = await res.json()
+        return data.data
+    }
+    catch (err) {
+        console.log(err);
+    }
+    revalidatePath('/')
+}

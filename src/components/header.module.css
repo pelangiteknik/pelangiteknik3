@@ -45,8 +45,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    border-right: 1px solid var(--hovercolormain);
-    border-left: 1px solid var(--hovercolormain);
     /* position: relative; */
     overflow: hidden;
 }
@@ -76,8 +74,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    border-right: 1px solid var(--hovercolormain);
-    border-left: 1px solid var(--hovercolormain)
+
 }
 
 .text4 {
@@ -97,8 +94,6 @@
     text-align: center;
     display: flex;
     align-items: center;
-    border-right: 1px solid var(--hovercolormain);
-    border-left: 1px solid var(--hovercolormain)
 }
 
 .text4 .note {
@@ -108,8 +103,6 @@
     text-align: center;
     display: flex;
     align-items: center;
-    border-right: 1px solid var(--hovercolormain);
-    border-left: 1px solid var(--hovercolormain)
 }
 
 .text4 .profil {
@@ -119,8 +112,6 @@
     text-align: center;
     display: flex;
     align-items: center;
-    border-right: 1px solid var(--hovercolormain);
-    border-left: 1px solid var(--hovercolormain);
     font-size: 15px;
 }
 
@@ -132,8 +123,7 @@
     text-align: center;
     display: flex;
     align-items: center;
-    border-right: 1px solid var(--hovercolormain);
-    border-left: 1px solid var(--hovercolormain)
+
 }
 
 .text1,
@@ -198,7 +188,7 @@
 
 .klik a:hover {
     transition: all ease 0.2s;
-    background-color: var(--colormain);
+    background-color: var(--hovercolormain);
     color: var(--colorsekunder);
 }
 

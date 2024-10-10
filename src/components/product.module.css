@@ -109,6 +109,7 @@
 
 .bawah {
     font-size: var(--font1);
+
 }
 
 .bawahjudul {
@@ -135,6 +136,7 @@
     width: 100%;
     width: 100%;
 }
+
 
 .specs table {
     width: 100%;
@@ -235,5 +237,9 @@
 
     .swipperex {
         width: 100vw
+    }
+
+    .specs {
+        font-size: var(--font1mobile);
     }
 }

@@ -13,10 +13,6 @@ export default function ProductSpecs({ data }) {
                 </thead>
                 <tbody>
                     <tr>
-                        <td>ID</td>
-                        <td>{data.id}</td>
-                    </tr>
-                    <tr>
                         <td>Phase Specification</td>
                         <td>{data.phase_spec}</td>
                     </tr>
