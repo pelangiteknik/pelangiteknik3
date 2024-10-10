@@ -2,27 +2,18 @@
 import styles from '@/components/product.module.css'
 import { FaWhatsapp } from "react-icons/fa";
 import convertToRupiah from '@/utils/ConvertRupiah'
-import Image from 'next/image';
 import ProductDetail from '@/components/productDetail';
 import ProductSpecs from '@/components/productSpecs';
 import ProductBeliMobile from "@/components/productBeliMobile";
-import { useRef, useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { FaCaretUp } from "react-icons/fa"
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Thumbs } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/pagination';
-import 'swiper/css/navigation';
-import { Pagination, FreeMode } from 'swiper/modules';
 import { useStore } from '@/zustand/zustand';
 import { useAuth } from '@clerk/nextjs'
 import { usePathname, useRouter } from 'next/navigation';
-
 import EmblaCarousel from '@/components/EmblaCarousel'
 
 export default function Product({ data }) {
     const pathname = usePathname()
-    console.log(data);
 
     const router = useRouter()
     const { isLoaded, userId, sessionId, getToken } = useAuth()
@@ -57,26 +48,11 @@ export default function Product({ data }) {
         e == 'specs' && setPilihan('specs')
     }
 
-    // SWIPEER
-    const swiperRef = useRef(null);
-    // const goNext = () => {
-    //     if (swiperRef.current && swiperRef.current.swiper) {
-    //         swiperRef.current.swiper.slideNext();
-    //     }
-    // };
-    // const goPrev = () => {
-    //     if (swiperRef.current && swiperRef.current.swiper) {
-    //         swiperRef.current.swiper.slidePrev();
-    //     }
-    // };
-    const [thumbsSwiper, setThumbsSwiper] = useState(null)
 
-    // const { height, width } = useWindowDimensions()
-    // const kondisiLebarTumb = width <= 1133 && width - 607
-    // const hasWindow = typeof window !== 'undefined';
-    // const [kondisiLebar, setKondisiLebar] = useState('')
+    const dataGambarUtama = [data.imageProductUtama]
+    const dataListGambar = data?.url_image_product
 
-    // const mediaMatch = hasWindow ? window.matchMedia('(max-width: 768px)').matches : null
+    const GabungDataGambar = [...dataGambarUtama, ...dataListGambar]
 
     return (
         <div className={styles.container}>
@@ -85,7 +61,7 @@ export default function Product({ data }) {
                 <div className={styles.atas}>
                     <div className={styles.swipperexluar}>
                         <div className={styles.swipperex}>
-                            <EmblaCarousel data={data?.url_image_product} />
+                            <EmblaCarousel data={GabungDataGambar} />
                         </div>
                     </div>
 

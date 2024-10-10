@@ -62,9 +62,9 @@ export default function Footer({ data }) {
             <div className={styles.list}>
               <div className={styles.produkkategori}>
                 <h1>Produk</h1>
-                {data?.map((data) => {
+                {data?.map((data, i) => {
                   return (
-                    <Link href={`/category/${data.slugCategory}`}>{data.category}</Link>
+                    <Link key={i} href={`/category/${data.slugCategory}`}>{data.category}</Link>
                   )
                 })}
               </div>

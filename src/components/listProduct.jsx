@@ -35,10 +35,8 @@ export default function ListProduct({ Listdata, FilterCategory, Lfilter, pencari
                                 <div className={styles.kategori}>
                                     {FilterCategory?.map((data, i) => {
                                         return (
-                                            <Link href={`/category/` + data.slugCategory}>
-                                                <div
-                                                    key={i}
-                                                    className={styles.list}>
+                                            <Link key={i} href={`/category/` + data.slugCategory}>
+                                                <div className={styles.list}>
                                                     <div className={styles.gambarikon}>
                                                         <Image
                                                             src={data.icon}
@@ -61,11 +59,8 @@ export default function ListProduct({ Listdata, FilterCategory, Lfilter, pencari
                     <div className={styles.listproduct}>
                         <div className={styles.grid}>
                             {Listdata?.map((data, i) => {
-
                                 return (
-                                    <div
-                                        className={styles.kotak}
-                                        key={i}>
+                                    <div key={i} className={styles.kotak}>
                                         <Link href={`/product/${data?.slugProduct}`}>
                                             <div className={styles.gambarbawah}>
                                                 <Image

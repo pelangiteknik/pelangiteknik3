@@ -1,7 +1,15 @@
 import DataPesanan from "@/components/user/dataPesanan";
+import HeaderFooter from "@/components/layout/headerFooter";
+import { GetListKategori } from "@/service/userNew";
 
-export default function Page() {
+export default async function Page() {
+    const [dataKategori] = await Promise.all([
+        GetListKategori()
+    ])
     return (
-        <DataPesanan />
+        <HeaderFooter data={dataKategori}>
+            <DataPesanan />
+        </HeaderFooter >
+
     )
 }

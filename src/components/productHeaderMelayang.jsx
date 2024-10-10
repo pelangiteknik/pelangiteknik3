@@ -23,8 +23,7 @@ export default function ProductHeaderMelayang({ data }) {
                     <div className={styles.dalamkontainer}>
                         {data?.map((data, i) => {
                             return (
-                                <div
-                                    className={styles.kotak}
+                                <div className={styles.kotak}
                                     key={i}
                                     onClick={() => handleKlikProduct(data?.slugCategory)}
                                 >

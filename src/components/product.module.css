@@ -4,6 +4,7 @@
     width: 100%;
     color: var(--colorthrid);
     font-size: var(--font1);
+    line-height: 30px;
 }
 
 .atas {
@@ -105,6 +106,10 @@
 }
 
 /* BAWAH */
+
+.bawah {
+    font-size: var(--font1);
+}
 
 .bawahjudul {
     display: flex;

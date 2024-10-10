@@ -1,14 +1,11 @@
 'use client'
-import HeaderFooter from "@/components/layout/headerFooter";
 import styles from '@/components/user/dataPesanan.module.css'
 import convertToRupiah from "@/utils/ConvertRupiah";
 import { useSession, signIn, signOut } from "next-auth/react"
 import { useRouter } from "next/navigation"
 import { PiCodesandboxLogoDuotone } from "react-icons/pi";
 import { IoChevronBack } from "react-icons/io5";
-import { PiSignOut } from "react-icons/pi";
 import CustomLink from "@/lib/CustomLink";
-
 
 export default function DataPesanan() {
     const { data: session } = useSession()
@@ -58,57 +55,55 @@ export default function DataPesanan() {
 
     const router = useRouter()
     return (
-        <HeaderFooter >
-            <div className={styles.container}>
-                <div className={styles.dalamcontainer}>
-                    <div className={styles.atassendiri}>
-                        <CustomLink back={'back'}>
-                            <div className={styles.kiri}>
-                                <IoChevronBack />Back
-                            </div>
-                        </CustomLink>
-                        {/* <div className={styles.kanan} onClick={handleSignOut} >Sign Out<PiSignOut /></div> */}
-                        <h1>Orderan</h1>
-                    </div>
-                    <div className={styles.listorder}>
-                        {orders?.map((data) => {
-                            return (
-                                <div className={styles.kotak}>
-                                    <div className={styles.atas}>
-                                        <div className={styles.gambar}></div>
-                                        <div className={styles.text}>
-                                            <div className={styles.judul}>{data?.product}</div>
-                                            <div className={styles.idorder}>#{data?.id}</div>
-                                        </div>
+        <div className={styles.container}>
+            <div className={styles.dalamcontainer}>
+                <div className={styles.atassendiri}>
+                    <CustomLink back={'back'}>
+                        <div className={styles.kiri}>
+                            <IoChevronBack />Back
+                        </div>
+                    </CustomLink>
+                    {/* <div className={styles.kanan} onClick={handleSignOut} >Sign Out<PiSignOut /></div> */}
+                    <h1>Orderan</h1>
+                </div>
+                <div className={styles.listorder}>
+                    {orders?.map((data, i) => {
+                        return (
+                            <div key={i} className={styles.kotak}>
+                                <div className={styles.atas}>
+                                    <div className={styles.gambar}></div>
+                                    <div className={styles.text}>
+                                        <div className={styles.judul}>{data?.product}</div>
+                                        <div className={styles.idorder}>#{data?.id}</div>
                                     </div>
-                                    <div className={styles.bawah}>
-                                        <div className={styles.kiri}>
-                                            <PiCodesandboxLogoDuotone /> &nbsp; Qty: {data?.quantity}
-                                        </div>
-                                        <div className={styles.kanan}>
-                                            <div className={styles.status} style={data?.status != "Delivered" ? { background: 'var(  --colorsekunder)', color: 'var(--colorthrid)' } : {}}>
-                                                {data?.status}
-                                            </div>
-                                        </div>
+                                </div>
+                                <div className={styles.bawah}>
+                                    <div className={styles.kiri}>
+                                        <PiCodesandboxLogoDuotone /> &nbsp; Qty: {data?.quantity}
                                     </div>
-                                    <div className={styles.bawah}>
-                                        <div className={styles.kiri}>
-                                            <div className={styles.harga}>
-                                                {convertToRupiah(data?.price * data?.quantity)}
-                                            </div>
-                                        </div>
-                                        <div className={styles.kanan}>
-                                            <div className={styles.hargaori}>
-                                                {convertToRupiah(data?.price)}
-                                            </div>
+                                    <div className={styles.kanan}>
+                                        <div className={styles.status} style={data?.status != "Delivered" ? { background: 'var(  --colorsekunder)', color: 'var(--colorthrid)' } : {}}>
+                                            {data?.status}
                                         </div>
                                     </div>
                                 </div>
-                            )
-                        })}
-                    </div>
+                                <div className={styles.bawah}>
+                                    <div className={styles.kiri}>
+                                        <div className={styles.harga}>
+                                            {convertToRupiah(data?.price * data?.quantity)}
+                                        </div>
+                                    </div>
+                                    <div className={styles.kanan}>
+                                        <div className={styles.hargaori}>
+                                            {convertToRupiah(data?.price)}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        )
+                    })}
                 </div>
             </div>
-        </HeaderFooter >
+        </div>
     )
 }

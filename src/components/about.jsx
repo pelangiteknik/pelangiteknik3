@@ -1,5 +1,4 @@
 'use client'
-
 import styles from '@/components/about.module.css'
 import Image from 'next/image'
 
