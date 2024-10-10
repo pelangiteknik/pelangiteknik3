@@ -37,7 +37,6 @@ export default function FormData() {
     })
 
     const handleSubmit = async (value) => {
-        console.log(value)
         setOpenFormData()
     }
 

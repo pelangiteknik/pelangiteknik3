@@ -3,6 +3,11 @@
     justify-content: center;
     width: 100%;
     color: var(--colorthrid);
+    font-size: var(--font1);
+}
+
+.atas {
+    margin: 30px 0;
 }
 
 .dalamcontainer {
@@ -49,16 +54,16 @@
 
 .review .price {
     color: var(--colormain);
-    font-size: 1.5rem;
+    font-size: calc(var(--font1) + 15px);
 }
 
 .review button {
+    font-size: var(--font1);
     background-color: var(--colormain);
     color: var(--colorsekunder);
     height: 60px;
     font-weight: 500;
     border: 0;
-    font-size: 0.8rem;
     width: 100%;
     border-radius: var(--border-radius);
     margin-bottom: 20px;
@@ -76,7 +81,6 @@
     height: 60px;
     font-weight: 500;
     border: 0;
-    font-size: 0.8rem;
     width: 100%;
     border-radius: var(--border-radius);
     display: flex;
@@ -97,7 +101,7 @@
 
 .review .buu .stock {
     text-align: right;
-    font-size: 0.8rem;
+    font-size: var(--fontnofifmobile);
 }
 
 /* BAWAH */
@@ -127,6 +131,10 @@
     width: 100%;
 }
 
+.specs table {
+    width: 100%;
+}
+
 .specs tr {
     width: 100%;
 }
@@ -138,7 +146,6 @@
 }
 
 .specs tr td {
-    width: 100%;
     text-align: left;
     padding: 10px;
 }
@@ -191,10 +198,6 @@
         display: none;
     }
 
-    .review {
-        font-size: 1rem;
-    }
-
     .review .price {
         display: none;
     }
@@ -203,12 +206,28 @@
         display: none;
     }
 
+    .container {
+        font-size: var(--font1mobile);
+    }
 
+    .atas {
+        margin: 0;
+    }
+
+    .specs tr th:nth-child(2) {
+        text-align: right;
+    }
+
+    .specs tr td:nth-child(2) {
+        text-align: right;
+    }
 
 }
 
 
 @media only screen and (max-width: 480px) {
+
+
     .swipperex {
         width: 100vw
     }

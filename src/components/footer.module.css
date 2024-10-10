@@ -1,12 +1,13 @@
 .container {
     display: flex;
     justify-content: center;
-    font-size: 0.5rem;
+    font-size: calc(var(--font1) - 6px);
     overflow-x: hidden;
 }
 
 .container a:hover {
-    color: var(--colormain)
+    background: var(--hovercolormain);
+    width: fit-content;
 }
 
 .container .atas {

@@ -5,32 +5,27 @@ import styles from '@/components/category.module.css'
 import Link from "next/link";
 
 export default function Category({ data }) {
-    const dataCategory = data?.data
-
     return (
         <div className={styles.container}>
             <div className={styles.dalamcontainer}>
                 <div className={styles.grid}>
-                    {dataCategory.map((data, i) => {
-                        // Mengubah semua huruf menjadi huruf kecil
-                        const lowerCaseString = data?.name.toLowerCase();
-                        // Mengganti spasi dengan tanda "-"
-                        const finalString = lowerCaseString?.replace(/ /g, '-');
+                    {data?.map((data, i) => {
+
                         return (
                             <Link
                                 key={i}
                                 // target="_blank"
-                                href={`/category/` + finalString}
+                                href={`/category/` + data?.slugCategory}
                                 className={styles.kotakisi}>
                                 <div className={styles.gambar}>
                                     <Image
-                                        src={data?.url_image}
-                                        alt={data?.name}
+                                        src={data?.icon}
+                                        alt={data?.category}
                                         width={200}
                                         height={200}
                                     ></Image>
                                 </div>
-                                <div className={styles.text}>{data?.name}</div>
+                                <div className={styles.text}>{data?.category}</div>
                             </Link>
                         )
                     })}

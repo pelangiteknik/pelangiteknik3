@@ -8,8 +8,7 @@ import { PiCodesandboxLogoDuotone } from "react-icons/pi";
 import { IoChevronBack } from "react-icons/io5";
 import { PiSignOut } from "react-icons/pi";
 import CustomLink from "@/lib/CustomLink";
-import NProgress from 'nprogress'
-import 'nprogress/nprogress.css'
+
 
 export default function DataPesanan() {
     const { data: session } = useSession()
@@ -58,36 +57,6 @@ export default function DataPesanan() {
     ]
 
     const router = useRouter()
-    const handleSignOut = async () => {
-        NProgress.configure({
-            showSpinner: false,
-            speed: 2000,
-            template: `
-                <div class="bar" role="bar">
-                    <div class="peg"></div>
-                </div>
-                <div class="custom-background"></div>
-            `
-        }).start()
-        await signOut({
-            redirect: false,
-        })
-        router.push('/');
-        NProgress.done().configure({
-            showSpinner: false,
-            minimum: 0.7,
-            easing: 'ease',
-            speed: 1000,
-            template: `
-                <div class="bar" role="bar">
-                    <div class="peg"></div>
-                </div>
-                <div class="custom-background"></div>
-            `
-        })
-    }
-
-
     return (
         <HeaderFooter >
             <div className={styles.container}>
@@ -98,11 +67,11 @@ export default function DataPesanan() {
                                 <IoChevronBack />Back
                             </div>
                         </CustomLink>
-                        <div className={styles.kanan} onClick={handleSignOut} >Sign Out<PiSignOut /></div>
+                        {/* <div className={styles.kanan} onClick={handleSignOut} >Sign Out<PiSignOut /></div> */}
+                        <h1>Orderan</h1>
                     </div>
-                    <div className={styles.judulatas}>Orderan {session?.user?.name}</div>
                     <div className={styles.listorder}>
-                        {orders.map((data) => {
+                        {orders?.map((data) => {
                             return (
                                 <div className={styles.kotak}>
                                     <div className={styles.atas}>

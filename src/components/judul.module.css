@@ -2,7 +2,7 @@
     display: flex;
     justify-content: center;
     width: 100%;
-    font-size: 2rem;
+    font-size: calc(var(--font1) + 20px);
     padding: 30px 0;
     color: var(--colorthrid);
 }
@@ -16,13 +16,13 @@
 
 @media only screen and (max-width: 767px) {
     .container {
-        font-size: 1.5rem;
+        font-size: calc(var(--font1) + 10px);
         padding: 30px 0 0 0;
     }
 }
 
 @media only screen and (max-width: 480px) {
     .container {
-        font-size: 1rem;
+        font-size: calc(var(--font1mobile) + 10px);
     }
 }

@@ -2,7 +2,7 @@
     display: flex;
     justify-content: center;
     color: var(--colorthrid);
-    font-size: 0.7rem;
+    font-size: var(--font1);
     font-weight: 500;
 }
 
@@ -16,6 +16,7 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
+    align-items: center;
 }
 
 .atassendiri .kiri {
@@ -102,7 +103,6 @@
 
 .kotak .bawah .kiri .harga {
     font-weight: 700;
-    font-size: 0.8rem;
     color: var(--colorwa);
 }
 
@@ -116,7 +116,7 @@
 
 
     .container {
-        font-size: 0.7rem;
+        font-size: var(--font1mobile);
     }
 
     .dalamcontainer {

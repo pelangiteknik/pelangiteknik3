@@ -6,29 +6,32 @@ import Judul from "@/components/judul";
 import HeaderFooter from "@/components/layout/headerFooter";
 import ListProduct from "@/components/listProduct";
 // import UploadGambar from "@/components/UploadGambar";
-import { ListProductsBest, FCategory } from "@/service/user";
+import { GetListKategori, GetListProduct } from "@/service/userNew";
+
 
 export const dynamic = 'force-dynamic'
 
 export default async function Home() {
-  const [data, dataBest] = await Promise.all([
-    FCategory(),
-    ListProductsBest(),
+
+  const [dataKategori, dataListProduct] = await Promise.all([
+    GetListKategori(),
+    GetListProduct()
   ])
 
+
   return (
-    <HeaderFooter >
-      <BannerMain data={data} />
+    <HeaderFooter data={dataKategori}  >
+      <BannerMain data={dataKategori} />
       <Hpo />
       {/* <ContentWithWatermark /> */}
       {/* <UploadGambar /> */}
       <Judul judul={'Best Product'} />
       <ListProduct
-        Listdata={dataBest}
+        Listdata={dataListProduct}
         Lfilter={false}
       />
       <Judul judul={'Categories'} />
-      <Category data={data} />
+      <Category data={dataKategori} />
 
     </HeaderFooter>
   );

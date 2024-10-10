@@ -9,7 +9,8 @@ const nextConfig = {
             'tsuzumi-bucket.s3.amazonaws.com',
             'pelangiteknik.vercel.app',
             'vercel.app',
-            'lh3.googleusercontent.com'
+            'lh3.googleusercontent.com',
+            'res.cloudinary.com'
         ],
     }, async headers() {
         return [

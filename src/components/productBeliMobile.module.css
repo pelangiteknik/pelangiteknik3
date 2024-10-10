@@ -5,7 +5,7 @@
     background-color: var(--colorsekunder);
     z-index: 9999;
     width: 100%;
-    font-size: 0.6rem;
+    font-size: var(--font1mobile);
     padding: 10px 20px 10px 20px;
     border-top: 1px solid var(--colorbggreyutama);
 }

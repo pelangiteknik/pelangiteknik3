@@ -1,6 +1,6 @@
 import styles from '@/components/productHeaderMelayang.module.css'
 import Image from 'next/image';
-import { useRouter } from "next/navigation";
+import { useRouter } from 'nextjs-toploader/app';
 import { useStore } from "@/zustand/zustand";
 import { useLockBodyScroll } from "@uidotdev/usehooks";
 
@@ -21,24 +21,20 @@ export default function ProductHeaderMelayang({ data }) {
             <div className={styles.isimelayang}>
                 <div className={styles.isimelayangdalam}>
                     <div className={styles.dalamkontainer}>
-                        {data.map((data, i) => {
-                            // Mengubah semua huruf menjadi huruf kecil
-                            const lowerCaseString = data?.name.toLowerCase();
-                            // Mengganti spasi dengan tanda "-"
-                            const finalString = lowerCaseString?.replace(/ /g, '-');
+                        {data?.map((data, i) => {
                             return (
                                 <div
                                     className={styles.kotak}
                                     key={i}
-                                    onClick={() => handleKlikProduct(finalString)}
+                                    onClick={() => handleKlikProduct(data?.slugCategory)}
                                 >
                                     <Image
-                                        src={data.url_image}
-                                        alt={data.name}
+                                        src={data?.icon}
+                                        alt={data?.category}
                                         width={100}
                                         height={100}
                                     />
-                                    {data.name}
+                                    {data?.category}
                                 </div>
                             )
                         })}

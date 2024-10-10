@@ -10,13 +10,13 @@ import { FaPhoneSquareAlt } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { FaCalendar } from "react-icons/fa";
 import { IoHomeSharp } from "react-icons/io5";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { useStore } from "@/zustand/zustand";
+import Link from "next/link";
 
-export default function Footer() {
+export default function Footer({ data }) {
   const ref = useRef(null);
   const setIsIntersecting = useStore((state) => state.setIsIntersecting)
-
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -62,33 +62,19 @@ export default function Footer() {
             <div className={styles.list}>
               <div className={styles.produkkategori}>
                 <h1>Produk</h1>
-                <a href="/">Best Products</a>
-                <a href="/">Tower Light </a>
-                <a href="/">Gear Bearing Puller</a>
-                <a href="/">Genset FAW-VW</a>
-                <a href="/">Dinamo</a>
-                <a href="/">Alternator</a>
-                <a href="/">Kompresor</a>
-                <a href="/">Konstruksi Jalan</a>
-                <a href="/">Genset Welding</a>
-                <a href="/">Alat Cat</a>
-                <a href="/">Bar Bending</a>
-                <a href="/">Diesel Engine</a>
-                <a href="/">Sparepart</a>
-                <a href="/">Water Pump</a>
-                <a href="/">Genset Tsuzumi</a>
-                <a href="/">Submersible Pump</a>
-                <a href="/">Genset Silent</a>
-                <a href="/">PROMO SPESIAL!</a>
-                <a href="/">TKDN</a>
+                {data?.map((data) => {
+                  return (
+                    <Link href={`/category/${data.slugCategory}`}>{data.category}</Link>
+                  )
+                })}
               </div>
               <div className={styles.pusatbantuan}>
                 <h1>Pusat Bantuan</h1>
-                <a href="/">Tentang Kami</a>
-                <a href="/">Kontak Kami</a>
-                <a href="/">Pelangi Teknik</a>
-                <a href="/">Syarat dan Ketentuan</a>
-                <a href="/">Kebijakan Privasi</a>
+                <Link href="/">Tentang Kami</Link>
+                <Link href="/">Kontak Kami</Link>
+                <Link href="/">Pelangi Teknik</Link>
+                <Link href="/">Syarat dan Ketentuan</Link>
+                <Link href="/">Kebijakan Privasi</Link>
                 <div className={styles.sosmed}>
                   <FaFacebookSquare /> Facebook
                 </div>

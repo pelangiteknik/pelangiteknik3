@@ -6,7 +6,7 @@ import Image from 'next/image';
 import ProductDetail from '@/components/productDetail';
 import ProductSpecs from '@/components/productSpecs';
 import ProductBeliMobile from "@/components/productBeliMobile";
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { FaCaretUp } from "react-icons/fa"
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Thumbs } from 'swiper/modules';
@@ -15,23 +15,35 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { Pagination, FreeMode } from 'swiper/modules';
 import { useStore } from '@/zustand/zustand';
-import { useRouter } from 'next/navigation';
-import { useSession, signIn, signOut } from "next-auth/react"
+import { useAuth } from '@clerk/nextjs'
+import { usePathname, useRouter } from 'next/navigation';
+
+import EmblaCarousel from '@/components/EmblaCarousel'
 
 export default function Product({ data }) {
+    const pathname = usePathname()
+    console.log(data);
+
     const router = useRouter()
-    const dataku = data?.data
+    const { isLoaded, userId, sessionId, getToken } = useAuth()
+
     const isIntersecting = useStore((state) => state.isIntersecting)
 
-    const { data: session } = useSession()
-    console.log(session);
+    const [isLoading, setIsLoading] = useState(false)
+    useEffect(() => {
+        setIsLoading(isLoaded)
+    }, [])
+
 
     const handleBeliSekarang = async () => {
-        await signIn("google", {
-            redirect: false,  // Disable automatic redirect
-            callbackUrl: "/", // URL tujuan setelah login berhasil
-        });
+        if (userId) {
+            alert('okkokokko')
+        } else {
+            localStorage.setItem("urlPrev", pathname);
+            router.push('/sign-in')
+        }
     }
+
 
     const handleWhatsapp = async () => {
 
@@ -73,74 +85,21 @@ export default function Product({ data }) {
                 <div className={styles.atas}>
                     <div className={styles.swipperexluar}>
                         <div className={styles.swipperex}>
-
-                            <Swiper
-                                modules={[FreeMode, Thumbs, Pagination]}
-                                thumbs={{ swiper: thumbsSwiper }}
-                                pagination={{
-                                    type: 'fraction',
-                                }}
-                                ref={swiperRef}
-                                loop={true}
-                                zoom={true}
-                                className='mySwipper2'
-                                id='mysW'
-                            >
-
-                                {dataku?.productImages?.map((data, i) => {
-                                    return (
-                                        <SwiperSlide key={i}>
-                                            <Image
-                                                src={data?.image}
-                                                width={500}
-                                                height={500}
-                                                alt={data?.id}>
-                                            </Image>
-                                        </SwiperSlide>
-                                    )
-                                })}
-                            </Swiper>
-
-                            {/* BAWAH DESKTOP GAMBAR */}
-                            <div className={styles.bawahsildder}>
-                                <Swiper
-                                    loop={false}
-                                    onSwiper={setThumbsSwiper}
-                                    spaceBetween={5}
-                                    slidesPerView={'auto'}
-                                    freeMode={true}
-                                    watchSlidesProgress={true}
-                                    modules={[FreeMode, Thumbs]}
-                                    className='mySwipper'
-                                // style={{ width: kondisiLebarTumb }}
-                                >
-                                    {dataku?.productImages.map((data, i) => {
-                                        return (
-                                            <SwiperSlide key={i}><Image src={data?.image} width={500} height={500} alt={data?.id}></Image></SwiperSlide>
-                                        )
-                                    })}
-
-                                </Swiper>
-                                {/* <div className={styles.tombolnextprev}>
-                                <div onClick={goPrev}><IoIosArrowBack className={styles.logo} /></div>
-                                <div onClick={goNext}><IoIosArrowForward className={styles.logo} /></div>
-                            </div> */}
-                            </div>
-
+                            <EmblaCarousel data={data?.url_image_product} />
                         </div>
                     </div>
 
                     <div className={styles.review}>
                         <div className={styles.judul}>
-                            {dataku?.name}
+                            {data?.productName}
                         </div>
 
                         <div className={styles.price}>
-                            {convertToRupiah(dataku?.price)}
+                            {convertToRupiah(Number(data?.productPriceFinal))}
                         </div>
                         <div className={styles.buu}>
                             <div className={styles.stock}>
-                                Stock:  {dataku?.stock}
+                                Stock:  {data?.stockProduct}
                             </div>
                             <button onClick={handleBeliSekarang}>
                                 Beli Sekarang
@@ -173,16 +132,16 @@ export default function Product({ data }) {
                         </div>
                     </div>
                     <div className={styles.bawahpilihan}>
-                        {pilihan == 'detail' && <ProductDetail data={dataku?.desc} />}
-                        {pilihan == 'specs' && <ProductSpecs data={dataku?.features_by_category} />}
+                        {pilihan == 'detail' && <ProductDetail data={data?.descProduct} />}
+                        {pilihan == 'specs' && <ProductSpecs data={data?.spec_product} />}
                     </div>
                 </div>
                 {!isIntersecting &&
                     <ProductBeliMobile
                         handleBeliSekarang={handleBeliSekarang}
                         handleWhatsapp={handleWhatsapp}
-                        price={convertToRupiah(dataku?.price)}
-                        stock={dataku?.stock}
+                        price={convertToRupiah(Number(data?.productPriceFinal))}
+                        stock={data?.stockProduct}
                     />}
 
             </div>

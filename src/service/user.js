@@ -1,3 +1,5 @@
+'use server'
+
 export const ListProductsBest = async () => {
     const res = await fetch('https://api-ecom.tsuzumijapan.com/api/product.list')
     const data = await res.json()

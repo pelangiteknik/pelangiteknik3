@@ -3,8 +3,8 @@
 :root {
   --max-width: 1080px !important;
   --border-radius: 4px !important;
-  --colormain: #c8302f !important;
-  --hovercolormain: #b32b2a !important;
+  --colormain: #152f66 !important;
+  --hovercolormain: #152f66e5 !important;
   --colorsekunder: #ffffff !important;
   --colorthrid: #1A1918 !important;
   --colornotif: #ffdf00 !important;
@@ -14,7 +14,42 @@
   --colortext: #333;
   --colorwa: #137036 !important;
   --hover-colorwa: #137037ef !important;
-  font-size: 25px;
+  --font1: 18px !important;
+  --font1mobile: 16px !important;
+  --fontnofifmobile: 12.5px !important;
+
+  --brand-primary: rgb(47, 112, 193);
+  --brand-secondary: rgb(116, 97, 195);
+  --brand-alternative: rgb(19, 120, 134);
+  --background-site: rgb(249, 249, 249);
+  --background-code: rgb(244, 244, 244);
+  --text-body: rgb(54, 49, 61);
+  --text-comment: rgb(99, 94, 105);
+  --text-high-contrast: rgb(49, 49, 49);
+  --text-medium-contrast: rgb(99, 94, 105);
+  --text-low-contrast: rgb(116, 109, 118);
+  --detail-high-contrast: rgb(192, 192, 192);
+  --detail-medium-contrast: rgb(234, 234, 234);
+  --detail-low-contrast: rgb(240, 240, 242);
+  --admonition-note: rgb(46, 109, 188);
+  --admonition-warning: rgb(255, 196, 9);
+  --admonition-danger: rgb(220, 38, 38);
+  --brand-primary-rgb-value: 47, 112, 193;
+  --brand-secondary-rgb-value: 116, 97, 195;
+  --brand-alternative-rgb-value: 19, 120, 134;
+  --background-site-rgb-value: 249, 249, 249;
+  --background-code-rgb-value: 244, 244, 244;
+  --text-body-rgb-value: 54, 49, 61;
+  --text-comment-rgb-value: 99, 94, 105;
+  --text-high-contrast-rgb-value: 49, 49, 49;
+  --text-medium-contrast-rgb-value: 99, 94, 105;
+  --text-low-contrast-rgb-value: 116, 109, 118;
+  --detail-high-contrast-rgb-value: 192, 192, 192;
+  --detail-medium-contrast-rgb-value: 234, 234, 234;
+  --detail-low-contrast-rgb-value: 240, 240, 242;
+  --admonition-note-rgb-value: 46, 109, 188;
+  --admonition-warning-rgb-value: 255, 196, 9;
+  --admonition-danger-rgb-value: 220, 38, 38;
 }
 
 * {
@@ -43,7 +78,7 @@ a {
 }
 
 h1 {
-  font-size: 0.8rem;
+  font-size: var(--font1);
   margin: 10px 0;
 }
 
@@ -169,6 +204,28 @@ td {
 } */
 
 
+.cl-formButtonPrimary {
+  /* font-size: 14px!important; */
+  text-transform: none;
+  background-color: var(--colormain);
+}
+
+.cl-formButtonPrimary:hover,
+.cl-formButtonPrimary:focus,
+.cl-formButtonPrimary:active {
+  background-color: var(--hovercolormain)
+}
+
+
+.cl-avatarBox,
+.cl-userButtonAvatarBox {
+  width: 35px;
+  height: 35px;
+}
+
+
+
+
 @media only screen and (max-width: 767px) {
   h1 {
     font-size: 0.7rem;
@@ -185,10 +242,25 @@ td {
     object-fit: contain;
   }
 
+  .embla-thumbs__container {
+    padding: 0 20px;
+  }
+
+  .embla__slide__number {
+    width: 100%;
+  }
+
 }
 
 
 @media only screen and (max-width: 480px) {
+
+  .embla__slide__number {
+    box-shadow: none;
+    border-radius: 0;
+    height: 400px;
+  }
+
   h1 {
     font-size: 0.7rem;
   }

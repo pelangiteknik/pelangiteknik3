@@ -1,8 +1,8 @@
 import HeaderFooter from "@/components/layout/headerFooter";
 import Product from "@/components/product";
-import { Produk, ListProductsBest } from "@/service/user";
 import ListProduct from "@/components/listProduct";
 import Judul from "@/components/judul";
+import { GetProduct, GetListProduct, GetListKategori } from "@/service/userNew";
 
 export const dynamic = 'force-dynamic'
 
@@ -12,19 +12,20 @@ BigInt.prototype.toJSON = function () {
 
 export default async function Page({ params }) {
 
-    const [dataProduk, dataBest] = await Promise.all([
-        Produk(params.slug),
-        ListProductsBest(),
+    const [dataProduct, dataListProduct, dataListKategori] = await Promise.all([
+        GetProduct(params.slug),
+        GetListProduct(),
+        GetListKategori()
     ])
 
     return (
-        <HeaderFooter >
+        <HeaderFooter data={dataListKategori} >
             <Product
-                data={dataProduk}
+                data={dataProduct[0]}
             />
             <Judul judul={'Best Product'} />
             <ListProduct
-                Listdata={dataBest}
+                Listdata={dataListProduct}
                 Lfilter={false}
             />
         </HeaderFooter>

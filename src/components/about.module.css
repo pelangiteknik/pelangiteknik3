@@ -9,7 +9,7 @@
 }
 
 .judul {
-    font-size: 1.2rem;
+    font-size: calc(var(--font1) + 5px);
     text-align: center;
     font-weight: 700;
     padding-bottom: 30px;
@@ -47,12 +47,12 @@
     display: flex;
     align-items: center;
     width: 40%;
-    font-size: 0.6rem;
+    font-size: var(--font1);
 }
 
 .text .textjudul {
     font-weight: 700;
-    font-size: 0.8rem;
+    font-size: calc(var(--font1) + 5px);
     margin-bottom: 20px;
     color: var(--colorthrid);
 }
@@ -78,4 +78,13 @@
     .text {
         width: 100%;
     }
+
+    .text {
+        font-size: var(--font1mobile);
+    }
+
+    .text .textjudul {
+        font-size: calc(var(--font1mobile) + 5px);
+    }
+
 }

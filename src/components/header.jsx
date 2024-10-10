@@ -7,32 +7,34 @@ import { BsFillTriangleFill } from "react-icons/bs";
 import { useEffect, useState } from "react";
 import { useStore } from "@/zustand/zustand";
 import ProductHeaderMelayang from "./productHeaderMelayang";
-import { useSession, signIn, signOut } from "next-auth/react"
 import { FaSearch } from "react-icons/fa";
 import { FaShoppingCart } from "react-icons/fa";
 import { FaUser } from "react-icons/fa";
-import CustomLink from "@/lib/CustomLink";
-export default function Header() {
-  const [data, setData] = useState([])
+import { ClerkProvider, SignedIn, SignedOut, SignInButton, UserButton, useAuth } from '@clerk/nextjs'
+import Skeleton from 'react-loading-skeleton'
+import { PiNotepadBold } from "react-icons/pi";
+import Link from "next/link";
+
+export default function Header({ data }) {
+
+  const { isLoaded, userId, sessionId, getToken } = useAuth()
+
+  console.log(isLoaded);
+  console.log(userId);
+  console.log(sessionId);
+
+  const [isLoading, setIsLoading] = useState(false)
+  useEffect(() => {
+    setIsLoading(isLoaded)
+  }, [])
+
+
   const searchTermClose = useStore((state) => state.searchTermClose)
   const setSearchTermClose = useStore((state) => state.setSearchTermClose)
 
   const productMelayangHeader = useStore((state) => state.productMelayangHeader)
   const setProductMelayangHeader = useStore((state) => state.setProductMelayangHeader)
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/category.json`)
-        const data = await res.json()
-        setData(data?.data)
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    }
-
-    fetchData()
-  }, [])
 
   const HandlePilihProduct = () => {
     setProductMelayangHeader(true)
@@ -42,24 +44,16 @@ export default function Header() {
     setSearchTermClose()
   }
 
-  const handleLogin = async () => {
-    await signIn("google", {
-      redirect: false,  // Disable automatic redirect
-      callbackUrl: "/", // URL tujuan setelah login berhasil
-    });
-  }
-
-  const { data: session } = useSession()
 
   return (
     <header className={styles.header}>
       <div className={styles.atas}>
         <div className={styles.container}>
-          <CustomLink href={'/'}>
+          <Link href={'/'}>
             <div className={styles.gambar}>
               <Image src={`${process.env.NEXT_PUBLIC_URL}/logo.png`} height={80} width={400} alt="logo" />
             </div>
-          </CustomLink>
+          </Link>
           <div className={styles.text1}
             onClick={() => HandlePilihProduct()}
             style={productMelayangHeader ? { background: ' var(--colorthrid)' } : {}}
@@ -71,9 +65,9 @@ export default function Header() {
           </div>
           <a className={styles.text2}>BLOG</a>
           <div className={styles.text3}>
-            <CustomLink href={`/about`}>
+            <Link href={`/about`}>
               <div className={styles.about} > ABOUT </div>
-            </CustomLink>
+            </Link>
           </div>
 
           <div className={styles.pencariandeskop}>
@@ -88,21 +82,24 @@ export default function Header() {
               </div>
             </div>
             <div className={styles.cartdesktop}>
-              <CustomLink href={`/cart`}>
+              <Link href={`/cart`}>
                 <FaShoppingCart size={27} />
-              </CustomLink>
+              </Link>
+            </div>
+            <div className={styles.note}>
+              <Link href={`/order`}>
+                <PiNotepadBold size={27} />
+              </Link>
             </div>
             <div className={styles.profil}>
-              {session ? <CustomLink href={`/order`}>
-                <Image
-                  style={{ borderRadius: '50%' }}
-                  src={session?.user?.image}
-                  alt={session?.user?.name}
-                  width={27}
-                  height={27}
-                ></Image>
-              </CustomLink> : <div onClick={handleLogin}><FaUser size={27} /></div>}
+              {userId ? <UserButton /> :
+                <Link href={`/sign-in`}>
+                  <div><FaUser size={27} /></div>
+                </Link>
+              }
+              {userId ? !isLoading && <Skeleton width={40} height={40} borderRadius={50} /> : <div></div>}
             </div>
+
           </div>
 
           {searchTermClose &&

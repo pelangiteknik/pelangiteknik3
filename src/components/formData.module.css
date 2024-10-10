@@ -4,7 +4,7 @@
     min-height: 100%;
     min-width: 100%;
     background-color: rgb(0, 0, 0);
-    opacity: 0.5;
+    opacity: 0.7;
     z-index: 9999;
 }
 
@@ -17,12 +17,11 @@
     width: 500px;
     border-radius: 10px;
     background-color: #f9f9f9;
-    font-size: 0.7rem;
+    font-size: var(--font1);
     padding: 30px;
 }
 
 .formContainer .judul {
-    font-size: 0.8rem;
     font-weight: 700;
     margin-bottom: 20px;
     position: relative;

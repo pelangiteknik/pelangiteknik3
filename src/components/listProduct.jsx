@@ -7,10 +7,9 @@ import Image from 'next/image'
 import { useState } from 'react'
 import { CiFilter } from "react-icons/ci";
 import Judul from './judul';
-import CustomLink from '@/lib/CustomLink';
+import Link from 'next/link';
 
 export default function ListProduct({ Listdata, FilterCategory, Lfilter, pencarian }) {
-    const filter = FilterCategory?.data
     const { width } = useWindowDimensions()
     const kondisiLebar = width <= 1000
 
@@ -34,31 +33,25 @@ export default function ListProduct({ Listdata, FilterCategory, Lfilter, pencari
 
                             {kategori &&
                                 <div className={styles.kategori}>
-                                    {filter.map((data, i) => {
-                                        // Mengubah semua huruf menjadi huruf kecil
-                                        const lowerCaseString = data?.name.toLowerCase();
-                                        // Mengganti spasi dengan tanda "-"
-                                        const finalString = lowerCaseString?.replace(/ /g, '-');
+                                    {FilterCategory?.map((data, i) => {
                                         return (
-                                            <CustomLink href={`/category/` + finalString}>
+                                            <Link href={`/category/` + data.slugCategory}>
                                                 <div
                                                     key={i}
-                                                    // target="_blank"
-                                                    href={`/category/` + finalString}
                                                     className={styles.list}>
                                                     <div className={styles.gambarikon}>
                                                         <Image
-                                                            src={data.url_image}
+                                                            src={data.icon}
                                                             width={30}
                                                             height={30}
                                                             alt='ok'
                                                         ></Image>
                                                     </div>
                                                     <div className={styles.text}>
-                                                        {data?.name}
+                                                        {data?.category}
                                                     </div>
                                                 </div>
-                                            </CustomLink>
+                                            </Link>
                                         )
                                     })}
                                 </div>
@@ -67,18 +60,17 @@ export default function ListProduct({ Listdata, FilterCategory, Lfilter, pencari
                     }
                     <div className={styles.listproduct}>
                         <div className={styles.grid}>
-                            {Listdata.map((data, i) => {
-                                return (
-                                    <CustomLink href={`/product/${data?.slug}`}>
-                                        <div
-                                            // target="_blank"
+                            {Listdata?.map((data, i) => {
 
-                                            className={styles.kotak}
-                                            key={i}>
+                                return (
+                                    <div
+                                        className={styles.kotak}
+                                        key={i}>
+                                        <Link href={`/product/${data?.slugProduct}`}>
                                             <div className={styles.gambarbawah}>
                                                 <Image
-                                                    src={data?.images[0]?.image}
-                                                    alt={data?.slug}
+                                                    src={data?.imageProductUtama?.secure_url}
+                                                    alt={data?.productName}
                                                     width={250}
                                                     height={200}
                                                 >
@@ -94,20 +86,20 @@ export default function ListProduct({ Listdata, FilterCategory, Lfilter, pencari
                                                 </div>
                                             </div>
                                             <div className={styles.name}>
-                                                {data?.name}
+                                                {data?.productName}
                                             </div>
 
                                             <div className={styles.price}>
-                                                {convertToRupiah(data?.price)}
+                                                {convertToRupiah(Number(data?.productPriceFinal))}
                                             </div>
-                                        </div>
-                                    </CustomLink>
+                                        </Link>
+                                    </div>
                                 )
                             })}
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     )
 }
